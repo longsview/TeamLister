@@ -39,6 +39,9 @@
     UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
     MasterViewController *controller = (MasterViewController *)masterNavigationController.topViewController;
     controller.managedObjectContext = self.persistentStack.managedObjectContext;
+    
+    splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
+    
     return YES;
 }
 

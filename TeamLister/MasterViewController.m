@@ -17,7 +17,7 @@
     [super viewDidLoad];
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"realName" ascending:YES]];
     self.dataSource = [[FetchedResultsControllerDataSource alloc] initWithTableView:self.tableView];
     self.dataSource.delegate = self;
     self.dataSource.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
@@ -41,9 +41,46 @@
                       placeholderImage:nil];
 }
 
-- (void)deleteObject:(id)object
+- (IBAction)sortPressed:(id)sender {
+    // add an action sheet with the different types of sorting supported
+    //
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"SORT BY", @"Sort") delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Full Name", @"Slack Name", @"First Name", @"Last Name", @"Title", nil];
+    [sheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    // cancel clicked
+    //
+    if(buttonIndex == actionSheet.cancelButtonIndex) {
+        return;
+    }
     
+    // create a new fetch request based on the sort type selected
+    //
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+    
+    switch (buttonIndex) {
+        case 0:
+            request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"realName" ascending:YES]];
+            break;
+        case 1:
+            request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+            break;
+        case 2:
+            request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES]];
+            break;
+        case 3:
+            request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES]];
+            break;
+        case 4:
+            request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]];
+            break;
+    }
+    
+    // create a new fetched results controller and set it on the table view
+    //
+    self.dataSource.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

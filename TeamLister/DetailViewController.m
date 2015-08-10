@@ -31,12 +31,21 @@
         
         [self.userDetailView.userImageView sd_setImageWithURL:[NSURL URLWithString:self.user.icon192]
                                   placeholderImage:nil];
+        
+        self.userDetailView.contactView.hidden = FALSE;
     }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    // hide the back button on iPad since we always show
+    // the master view popover
+    //
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        self.userDetailView.backButton.hidden = TRUE;
+    }
+    
     [self configureView];
 }
 
@@ -63,6 +72,45 @@
     if (self.splitViewController.collapsed) {
         [self.splitViewController.viewControllers[0] popToRootViewControllerAnimated:true];
     }
+}
+
+- (IBAction)phonePressed:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", self.user.phone]]];
+}
+
+- (IBAction)emailPressed:(id)sender {
+    MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+    picker.mailComposeDelegate = self;
+
+    NSArray *toRecipients = [NSArray arrayWithObjects:self.user.email,
+                             nil];
+    [picker setToRecipients:toRecipients];
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+- (IBAction)smsPressed:(id)sender {
+    MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
+    picker.messageComposeDelegate = self;
+    
+    NSArray *recipients = [NSArray arrayWithObjects:self.user.phone,
+                             nil];
+    picker.recipients = recipients;
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+- (IBAction)skypePressed:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"skype://userinfo?%@", self.user.skype]]];
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError *)error
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

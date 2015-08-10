@@ -14,5 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userRealName;
 @property (weak, nonatomic) IBOutlet UILabel *userSlackName;
 @property (weak, nonatomic) IBOutlet UILabel *userTitle;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UIView *contactView;
 
 @end

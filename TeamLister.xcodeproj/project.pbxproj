@@ -26,6 +26,7 @@
 		B232030A1B78716C0034A8E9 /* UIColor+HexExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B23203091B78716C0034A8E9 /* UIColor+HexExtensions.m */; };
 		B23203101B78789B0034A8E9 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B232030F1B78789B0034A8E9 /* UserCell.m */; };
 		B23203131B788C840034A8E9 /* UserDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B23203121B788C840034A8E9 /* UserDetailView.m */; };
+		B23203161B7926680034A8E9 /* SplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23203151B7926680034A8E9 /* SplitViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,8 @@
 		B232030F1B78789B0034A8E9 /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
 		B23203111B788C840034A8E9 /* UserDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailView.h; sourceTree = "<group>"; };
 		B23203121B788C840034A8E9 /* UserDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailView.m; sourceTree = "<group>"; };
+		B23203141B7926680034A8E9 /* SplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewController.h; sourceTree = "<group>"; };
+		B23203151B7926680034A8E9 /* SplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitViewController.m; sourceTree = "<group>"; };
 		E50473A6930E39DEB6E556E4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -174,10 +177,12 @@
 		B23202F01B77E9A20034A8E9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B23202CE1B77E6CA0034A8E9 /* MasterViewController.h */,
-				B23202CF1B77E6CA0034A8E9 /* MasterViewController.m */,
 				B23202D11B77E6CA0034A8E9 /* DetailViewController.h */,
 				B23202D21B77E6CA0034A8E9 /* DetailViewController.m */,
+				B23202CE1B77E6CA0034A8E9 /* MasterViewController.h */,
+				B23202CF1B77E6CA0034A8E9 /* MasterViewController.m */,
+				B23203141B7926680034A8E9 /* SplitViewController.h */,
+				B23203151B7926680034A8E9 /* SplitViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -389,6 +394,7 @@
 				B23202F71B7856700034A8E9 /* FetchedResultsControllerDataSource.m in Sources */,
 				B23203041B78667C0034A8E9 /* PersistentStack.m in Sources */,
 				B23202CA1B77E6CA0034A8E9 /* AppDelegate.m in Sources */,
+				B23203161B7926680034A8E9 /* SplitViewController.m in Sources */,
 				B23203011B7861C40034A8E9 /* User.xcdatamodeld in Sources */,
 				B23202F31B77E9F70034A8E9 /* WebServices.m in Sources */,
 				B23202C71B77E6CA0034A8E9 /* main.m in Sources */,
