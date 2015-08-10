@@ -22,6 +22,7 @@
     self.searchController.searchBar.delegate = self;
     self.searchController.searchBar.barTintColor = [UIColor colorWithRed:71.0/255.0 green:65.0/255.0 blue:90.0/255.0 alpha:1.0];
     self.searchController.searchBar.tintColor = [UIColor whiteColor];
+    self.searchController.searchBar.translucent = TRUE;
     
     self.definesPresentationContext = YES;
     [self.searchController.searchBar sizeToFit];
