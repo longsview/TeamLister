@@ -1,9 +1,9 @@
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "MasterViewController.h"
 #import "FetchedResultsControllerDataSource.h"
 #import "User.h"
 #import "DetailViewController.h"
 #import "UserCell.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MasterViewController () <FetchedResultsControllerDataSourceDelegate>
 
@@ -48,8 +48,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    //PodDetailViewController *detailViewController = segue.destinationViewController;
-    //detailViewController.pod = self.dataSource.selectedItem;
+    DetailViewController *viewController = (DetailViewController*)[(UINavigationController*)segue.destinationViewController topViewController];
+    viewController.user = self.dataSource.selectedItem;
 }
 
 @end

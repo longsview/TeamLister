@@ -25,6 +25,7 @@
 		B23203071B786B7F0034A8E9 /* UserLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B23203061B786B7F0034A8E9 /* UserLoader.m */; };
 		B232030A1B78716C0034A8E9 /* UIColor+HexExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B23203091B78716C0034A8E9 /* UIColor+HexExtensions.m */; };
 		B23203101B78789B0034A8E9 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B232030F1B78789B0034A8E9 /* UserCell.m */; };
+		B23203131B788C840034A8E9 /* UserDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B23203121B788C840034A8E9 /* UserDetailView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		B23203091B78716C0034A8E9 /* UIColor+HexExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexExtensions.m"; sourceTree = "<group>"; };
 		B232030E1B78789B0034A8E9 /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
 		B232030F1B78789B0034A8E9 /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
+		B23203111B788C840034A8E9 /* UserDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailView.h; sourceTree = "<group>"; };
+		B23203121B788C840034A8E9 /* UserDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailView.m; sourceTree = "<group>"; };
 		E50473A6930E39DEB6E556E4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -226,6 +229,8 @@
 			children = (
 				B232030E1B78789B0034A8E9 /* UserCell.h */,
 				B232030F1B78789B0034A8E9 /* UserCell.m */,
+				B23203111B788C840034A8E9 /* UserDetailView.h */,
+				B23203121B788C840034A8E9 /* UserDetailView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -374,6 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B23203131B788C840034A8E9 /* UserDetailView.m in Sources */,
 				B23202D31B77E6CA0034A8E9 /* DetailViewController.m in Sources */,
 				B23202D01B77E6CA0034A8E9 /* MasterViewController.m in Sources */,
 				B23202FE1B7858B10034A8E9 /* User.m in Sources */,
