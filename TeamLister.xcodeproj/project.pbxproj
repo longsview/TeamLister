@@ -24,6 +24,7 @@
 		B23203041B78667C0034A8E9 /* PersistentStack.m in Sources */ = {isa = PBXBuildFile; fileRef = B23203031B78667C0034A8E9 /* PersistentStack.m */; };
 		B23203071B786B7F0034A8E9 /* UserLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B23203061B786B7F0034A8E9 /* UserLoader.m */; };
 		B232030A1B78716C0034A8E9 /* UIColor+HexExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B23203091B78716C0034A8E9 /* UIColor+HexExtensions.m */; };
+		B23203101B78789B0034A8E9 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B232030F1B78789B0034A8E9 /* UserCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,8 @@
 		B23203061B786B7F0034A8E9 /* UserLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoader.m; sourceTree = "<group>"; };
 		B23203081B78716C0034A8E9 /* UIColor+HexExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexExtensions.h"; sourceTree = "<group>"; };
 		B23203091B78716C0034A8E9 /* UIColor+HexExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexExtensions.m"; sourceTree = "<group>"; };
+		B232030E1B78789B0034A8E9 /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
+		B232030F1B78789B0034A8E9 /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
 		E50473A6930E39DEB6E556E4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -129,6 +132,7 @@
 				B23202F01B77E9A20034A8E9 /* Controllers */,
 				B232030B1B7872180034A8E9 /* Extensions */,
 				B23202F81B7856AB0034A8E9 /* Models */,
+				B232030D1B78787D0034A8E9 /* Views */,
 				B23202D41B77E6CA0034A8E9 /* Main.storyboard */,
 				B23202FF1B7861C40034A8E9 /* User.xcdatamodeld */,
 				B23202D71B77E6CA0034A8E9 /* Images.xcassets */,
@@ -215,6 +219,15 @@
 				B23202F61B7856700034A8E9 /* FetchedResultsControllerDataSource.m */,
 			);
 			name = DataSources;
+			sourceTree = "<group>";
+		};
+		B232030D1B78787D0034A8E9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B232030E1B78789B0034A8E9 /* UserCell.h */,
+				B232030F1B78789B0034A8E9 /* UserCell.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		E0C9F3FC3524F88CD25E31C1 /* Pods */ = {
@@ -373,6 +386,7 @@
 				B23203011B7861C40034A8E9 /* User.xcdatamodeld in Sources */,
 				B23202F31B77E9F70034A8E9 /* WebServices.m in Sources */,
 				B23202C71B77E6CA0034A8E9 /* main.m in Sources */,
+				B23203101B78789B0034A8E9 /* UserCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

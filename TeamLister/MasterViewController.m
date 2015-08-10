@@ -2,6 +2,8 @@
 #import "FetchedResultsControllerDataSource.h"
 #import "User.h"
 #import "DetailViewController.h"
+#import "UserCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MasterViewController () <FetchedResultsControllerDataSourceDelegate>
 
@@ -20,12 +22,23 @@
     self.dataSource.delegate = self;
     self.dataSource.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     self.dataSource.reuseIdentifier = @"Cell";
+    
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"slack"]];
+    self.tableView.tableFooterView = [[UIView alloc] init];
 }
 
 - (void)configureCell:(UITableViewCell *)cell withObject:(User*)object
 {
-    cell.textLabel.text = object.name;
-    cell.backgroundColor = [UIColor colorWithRed:object.colorR.floatValue green:object.colorG.floatValue blue:object.colorB.floatValue alpha:1.0];
+    UserCell *userCell = (UserCell*)cell;
+    
+    userCell.userRealName.text = object.realName;
+    userCell.userSlackName.text = [NSString stringWithFormat:@"@%@", object.name];
+    userCell.userTitle.text = object.title;
+    
+    userCell.backgroundColor = [UIColor colorWithRed:object.colorR.floatValue green:object.colorG.floatValue blue:object.colorB.floatValue alpha:0.25];
+    
+    [userCell.userImageView sd_setImageWithURL:[NSURL URLWithString:object.icon192]
+                      placeholderImage:nil];
 }
 
 - (void)deleteObject:(id)object
@@ -38,6 +51,5 @@
     //PodDetailViewController *detailViewController = segue.destinationViewController;
     //detailViewController.pod = self.dataSource.selectedItem;
 }
-
 
 @end

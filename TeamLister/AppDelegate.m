@@ -28,6 +28,8 @@
     self.userLoader = [[UserLoader alloc] initWithContext:self.persistentStack.managedObjectContext webservice:self.webServices];
     [self.userLoader load];
     
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     // Override point for customization after application launch.
     UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
     UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
