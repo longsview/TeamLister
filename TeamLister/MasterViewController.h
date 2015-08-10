@@ -2,7 +2,9 @@
 
 @class FetchedResultsControllerDataSource;
 
-@interface MasterViewController : UITableViewController <UIActionSheetDelegate>
+@interface MasterViewController : UITableViewController <UIActionSheetDelegate, UISearchResultsUpdating, UISearchBarDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) UISearchController *searchController;
+
 @end

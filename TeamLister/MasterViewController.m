@@ -16,6 +16,17 @@
 {
     [super viewDidLoad];
     
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.searchController.searchBar.delegate = self;
+    self.searchController.searchBar.barTintColor = [UIColor colorWithRed:71.0/255.0 green:65.0/255.0 blue:90.0/255.0 alpha:1.0];
+    self.searchController.searchBar.tintColor = [UIColor whiteColor];
+    
+    self.definesPresentationContext = YES;
+    [self.searchController.searchBar sizeToFit];
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"realName" ascending:YES]];
     self.dataSource = [[FetchedResultsControllerDataSource alloc] initWithTableView:self.tableView];
@@ -25,6 +36,7 @@
     
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"slack"]];
     self.tableView.tableFooterView = [[UIView alloc] init];
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
 }
 
 - (void)configureCell:(UITableViewCell *)cell withObject:(User*)object
@@ -48,8 +60,7 @@
     [sheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
 }
 
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     // cancel clicked
     //
     if(buttonIndex == actionSheet.cancelButtonIndex) {
@@ -81,6 +92,24 @@
     // create a new fetched results controller and set it on the table view
     //
     self.dataSource.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+}
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    NSString *searchString = searchController.searchBar.text;
+    if(searchController == nil || [searchString isEqualToString:@""]) {
+        // no search term
+        [self.dataSource.fetchedResultsController.fetchRequest setPredicate:nil];
+        self.dataSource.fetchedResultsController = self.dataSource.fetchedResultsController;
+        return;
+    }
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name contains[cd] %@ OR realName contains[cd] %@ OR title contains[cd] %@", searchString, searchString, searchString];
+
+    [self.dataSource.fetchedResultsController.fetchRequest setPredicate:predicate];
+    
+    // this causes a refetch
+    //
+    self.dataSource.fetchedResultsController = self.dataSource.fetchedResultsController;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
