@@ -12,7 +12,6 @@
             NSArray *users = responseObject[@"members"];
             callback(users, nil);
         }
-        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];

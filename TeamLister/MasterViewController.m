@@ -16,6 +16,8 @@
 {
     [super viewDidLoad];
     
+    // initialize the search controller and search bar apperance
+    //
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     self.searchController.searchResultsUpdater = self;
     self.searchController.dimsBackgroundDuringPresentation = NO;
@@ -27,11 +29,12 @@
     }
     self.searchController.searchBar.tintColor = [UIColor whiteColor];
     self.searchController.searchBar.translucent = TRUE;
-    
     self.definesPresentationContext = YES;
     [self.searchController.searchBar sizeToFit];
     self.tableView.tableHeaderView = self.searchController.searchBar;
     
+    // initialize the data source backed by our managed object context
+    //
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"realName" ascending:YES]];
     self.dataSource = [[FetchedResultsControllerDataSource alloc] initWithTableView:self.tableView];
@@ -39,6 +42,8 @@
     self.dataSource.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     self.dataSource.reuseIdentifier = @"Cell";
     
+    // initialize the navigation bar
+    //
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"slack"]];
     self.tableView.tableFooterView = [[UIView alloc] init];
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
@@ -51,9 +56,10 @@
     userCell.userRealName.text = object.realName;
     userCell.userSlackName.text = [NSString stringWithFormat:@"@%@", object.name];
     userCell.userTitle.text = object.title;
-    
     userCell.backgroundColor = [UIColor colorWithRed:object.colorR.floatValue green:object.colorG.floatValue blue:object.colorB.floatValue alpha:0.25];
     
+    // set and cache the user profile image on the cell
+    //
     [userCell.userImageView sd_setImageWithURL:[NSURL URLWithString:object.icon192]
                       placeholderImage:nil];
 }
@@ -103,6 +109,7 @@
     NSString *searchString = searchController.searchBar.text;
     if(searchController == nil || [searchString isEqualToString:@""]) {
         // no search term
+        //
         [self.dataSource.fetchedResultsController.fetchRequest setPredicate:nil];
         self.dataSource.fetchedResultsController = self.dataSource.fetchedResultsController;
         return;
@@ -119,6 +126,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    // set the selected user on the detail view controller
+    //
     DetailViewController *viewController = (DetailViewController*)[(UINavigationController*)segue.destinationViewController topViewController];
     viewController.user = self.dataSource.selectedItem;
 }

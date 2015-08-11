@@ -3,7 +3,9 @@
 @implementation UserCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    // round and put a border around the user
+    // profile image
+    //
     self.userImageView.layer.cornerRadius = 30;
     self.userImageView.layer.borderWidth = 2.0;
     self.userImageView.layer.borderColor = [UIColor darkGrayColor].CGColor;

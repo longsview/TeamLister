@@ -16,12 +16,12 @@
         _user = user;
             
         // Update the view.
+        //
         [self configureView];
     }
 }
 
 - (void)configureView {
-    // Update the user interface for the detail item.
     if (self.user) {
         self.userDetailView.userRealName.text = self.user.realName;
         self.userDetailView.userSlackName.text = [NSString stringWithFormat:@"@%@", self.user.name];
@@ -29,6 +29,9 @@
         
         NSString *deviceType = [UIDevice currentDevice].model;
  
+        // disable the CTA buttons based on if the device supports
+        // and if the user provided the information
+        //
         self.userDetailView.phoneButton.enabled = [deviceType isEqualToString:@"iPhone"] && self.user.phone.length > 0;
         self.userDetailView.emailButton.enabled = [MFMailComposeViewController canSendMail] && self.user.email.length > 0;
         self.userDetailView.smsButton.enabled = [MFMessageComposeViewController canSendText] && self.user.phone.length > 0;
@@ -36,6 +39,8 @@
         
         self.userDetailView.backgroundView.backgroundColor = [UIColor colorWithRed:self.user.colorR.floatValue green:self.user.colorG.floatValue blue:self.user.colorB.floatValue alpha:0.2];
         
+        // load the profile image and cache it
+        //
         [self.userDetailView.userImageView sd_setImageWithURL:[NSURL URLWithString:self.user.icon192]
                                   placeholderImage:nil];
         
@@ -68,11 +73,6 @@
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)backPressed:(id)sender {
@@ -109,12 +109,16 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"skype:%@?call", self.user.skype]]];
 }
 
+#pragma mark MFMailComposeViewControllerDelegate
+
 - (void)mailComposeController:(MFMailComposeViewController *)controller
           didFinishWithResult:(MFMailComposeResult)result
                         error:(NSError *)error
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark MFMessageComposeViewControllerDelegate
 
 -(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
     [self dismissViewControllerAnimated:YES completion:nil];

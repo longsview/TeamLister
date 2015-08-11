@@ -30,17 +30,19 @@
 - (void)loadFromDictionary:(NSDictionary *)dictionary
 {
     self.userID = dictionary[@"id"];
-    
     self.name = dictionary[@"name"];
     self.realName = dictionary[@"real_name"];
     
+    // initialize the color components
+    //
     UIColor * color = [UIColor colorFromHexString:dictionary[@"color"]];
     const CGFloat *components = CGColorGetComponents(color.CGColor);
-    
     self.colorR = [NSNumber numberWithFloat:components[0]];
     self.colorG = [NSNumber numberWithFloat:components[1]];
     self.colorB = [NSNumber numberWithFloat:components[2]];
     
+    // store profile information
+    //
     NSDictionary *profile = dictionary[@"profile"];
     if(profile != nil) {
         self.title = profile[@"title"];

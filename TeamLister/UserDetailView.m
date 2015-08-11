@@ -14,6 +14,9 @@
 {
     [super layoutSubviews];
     
+    // round and put a border around the user
+    // profile image
+    //
     self.userImageView.layer.borderColor = [UIColor darkGrayColor].CGColor;
     self.userImageView.layer.borderWidth = 4.0;
     self.userImageView.layer.cornerRadius = 100.0;

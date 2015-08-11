@@ -80,25 +80,10 @@
     [self.tableView reloadData];
 }
 
-
 - (id)selectedItem
 {
     NSIndexPath* path = self.tableView.indexPathForSelectedRow;
     return path ? [self.fetchedResultsController objectAtIndexPath:path] : nil;
 }
-
-
-- (void)setPaused:(BOOL)paused
-{
-    _paused = paused;
-    if (paused) {
-        self.fetchedResultsController.delegate = nil;
-    } else {
-        self.fetchedResultsController.delegate = self;
-        [self.fetchedResultsController performFetch:NULL];
-        [self.tableView reloadData];
-    }
-}
-
 
 @end

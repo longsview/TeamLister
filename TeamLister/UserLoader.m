@@ -22,6 +22,8 @@
 
 - (void)load
 {
+    // call the web service and create User models from the resulting data
+    //
     [self.webService getUsers:^(NSArray *users, NSError *error)
      {
          [self.context performBlock:^
