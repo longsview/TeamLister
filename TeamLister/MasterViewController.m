@@ -20,7 +20,11 @@
     self.searchController.searchResultsUpdater = self;
     self.searchController.dimsBackgroundDuringPresentation = NO;
     self.searchController.searchBar.delegate = self;
-    self.searchController.searchBar.barTintColor = [UIColor colorWithRed:71.0/255.0 green:65.0/255.0 blue:90.0/255.0 alpha:1.0];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        self.searchController.searchBar.barTintColor = [UIColor colorWithRed:71.0/255.0 green:65.0/255.0 blue:90.0/255.0 alpha:1.0];
+    } else {
+        self.searchController.searchBar.barTintColor = [UIColor colorWithRed:97.0/255.0 green:92.0/255.0 blue:110.0/255.0 alpha:1.0];
+    }
     self.searchController.searchBar.tintColor = [UIColor whiteColor];
     self.searchController.searchBar.translucent = TRUE;
     

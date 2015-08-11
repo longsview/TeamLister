@@ -16,5 +16,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *userTitle;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIView *contactView;
+@property (weak, nonatomic) IBOutlet UIButton *phoneButton;
+@property (weak, nonatomic) IBOutlet UIButton *emailButton;
+@property (weak, nonatomic) IBOutlet UIButton *smsButton;
+@property (weak, nonatomic) IBOutlet UIButton *skypeButton;
 
 @end

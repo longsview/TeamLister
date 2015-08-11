@@ -27,6 +27,13 @@
         self.userDetailView.userSlackName.text = [NSString stringWithFormat:@"@%@", self.user.name];
         self.userDetailView.userTitle.text = self.user.title;
         
+        NSString *deviceType = [UIDevice currentDevice].model;
+ 
+        self.userDetailView.phoneButton.enabled = [deviceType isEqualToString:@"iPhone"] && self.user.phone.length > 0;
+        self.userDetailView.emailButton.enabled = [MFMailComposeViewController canSendMail] && self.user.email.length > 0;
+        self.userDetailView.smsButton.enabled = [MFMessageComposeViewController canSendText] && self.user.phone.length > 0;
+        self.userDetailView.skypeButton.enabled = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"skype:"]] && self.user.skype.length > 0;
+        
         self.userDetailView.backgroundView.backgroundColor = [UIColor colorWithRed:self.user.colorR.floatValue green:self.user.colorG.floatValue blue:self.user.colorB.floatValue alpha:0.2];
         
         [self.userDetailView.userImageView sd_setImageWithURL:[NSURL URLWithString:self.user.icon192]
@@ -99,7 +106,7 @@
 }
 
 - (IBAction)skypePressed:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"skype://userinfo?%@", self.user.skype]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"skype:%@?call", self.user.skype]]];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller

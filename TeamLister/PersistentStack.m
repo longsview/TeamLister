@@ -3,7 +3,6 @@
 @interface PersistentStack ()
 
 @property (nonatomic,readwrite) NSManagedObjectContext* managedObjectContext;
-@property (nonatomic,readwrite) NSManagedObjectContext* backgroundManagedObjectContext;
 @property (nonatomic) NSURL* modelURL;
 @property (nonatomic) NSURL* storeURL;
 
@@ -26,10 +25,6 @@
 {
     self.managedObjectContext = [self setupManagedObjectContextWithConcurrencyType:NSMainQueueConcurrencyType];
     self.managedObjectContext.undoManager = [[NSUndoManager alloc] init];
-    
-    self.backgroundManagedObjectContext = [self setupManagedObjectContextWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    self.backgroundManagedObjectContext.undoManager = nil;
-    
     
     [[NSNotificationCenter defaultCenter]
      addObserverForName:NSManagedObjectContextDidSaveNotification

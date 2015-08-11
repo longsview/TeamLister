@@ -42,7 +42,7 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DG2-cS-cAT">
                                         <rect key="frame" x="200" y="152" width="200" height="200"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="1" green="0.93468640734265729" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="6Dt-Fl-jaP"/>
                                             <constraint firstAttribute="width" constant="200" id="BQj-9Z-gYj"/>
@@ -83,6 +83,7 @@
                                                 <state key="normal" image="phone_dark">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <state key="disabled" image="phone_grey"/>
                                                 <connections>
                                                     <action selector="phonePressed:" destination="JEX-9P-axG" eventType="touchUpInside" id="icl-pw-zIJ"/>
                                                 </connections>
@@ -92,6 +93,7 @@
                                                 <state key="normal" image="email_dark">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <state key="disabled" image="email_grey"/>
                                                 <connections>
                                                     <action selector="emailPressed:" destination="JEX-9P-axG" eventType="touchUpInside" id="hMr-gf-7ct"/>
                                                 </connections>
@@ -101,6 +103,7 @@
                                                 <state key="normal" image="sms_dark">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <state key="disabled" image="sms_grey"/>
                                                 <connections>
                                                     <action selector="smsPressed:" destination="JEX-9P-axG" eventType="touchUpInside" id="B4b-PR-7p9"/>
                                                 </connections>
@@ -110,6 +113,7 @@
                                                 <state key="normal" image="skype_dark">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <state key="disabled" image="skype_grey"/>
                                                 <connections>
                                                     <action selector="skypePressed:" destination="JEX-9P-axG" eventType="touchUpInside" id="6QK-wF-Vz6"/>
                                                 </connections>
@@ -168,6 +172,10 @@
                             <outlet property="backButton" destination="VML-Zp-rA0" id="oI7-aL-k0U"/>
                             <outlet property="backgroundView" destination="ceU-Zo-VIc" id="Olz-P6-daI"/>
                             <outlet property="contactView" destination="3qe-Mr-cB0" id="LV1-A1-nDS"/>
+                            <outlet property="emailButton" destination="YnH-9h-RSO" id="JMS-8z-0oX"/>
+                            <outlet property="phoneButton" destination="MLu-r6-Aps" id="XPr-0M-kaC"/>
+                            <outlet property="skypeButton" destination="hJC-Dl-FcH" id="fx8-v2-cBp"/>
+                            <outlet property="smsButton" destination="Fo5-Zi-g8c" id="XJO-gA-BGl"/>
                             <outlet property="userImageView" destination="DG2-cS-cAT" id="byw-Io-BTv"/>
                             <outlet property="userRealName" destination="vLO-fn-dPc" id="HD9-fh-2VD"/>
                             <outlet property="userSlackName" destination="zL1-xh-LWe" id="565-by-dTD"/>
@@ -302,9 +310,13 @@
     <resources>
         <image name="back_dark" width="30" height="30"/>
         <image name="email_dark" width="30" height="23"/>
+        <image name="email_grey" width="30" height="23"/>
         <image name="phone_dark" width="22" height="30"/>
+        <image name="phone_grey" width="23" height="30"/>
         <image name="skype_dark" width="28" height="30"/>
+        <image name="skype_grey" width="28" height="30"/>
         <image name="sms_dark" width="30" height="30"/>
+        <image name="sms_grey" width="30" height="30"/>
         <image name="sort" width="23" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
