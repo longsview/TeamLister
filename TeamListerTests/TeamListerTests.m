@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "WebServices.h"
 
 @interface TeamListerTests : XCTestCase
+{
+    WebServices *webServices;
+}
 
 @end
 
@@ -17,7 +21,8 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    webServices = [[WebServices alloc] init];
 }
 
 - (void)tearDown {
@@ -25,15 +30,19 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
-}
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
+-(void)testWebService
+{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing web service!"];
+    [webServices getUsers:^(NSArray *array, NSError *error) {
+        XCTAssert(array.count > 0, @"Pass");
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
     }];
 }
 
